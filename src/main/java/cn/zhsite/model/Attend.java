@@ -5,6 +5,7 @@ import cn.zhsite.model.state.PaymentState;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -26,6 +27,15 @@ public class Attend implements Serializable{
     @Enumerated(EnumType.STRING)
     private AttendState state;
     private LocalDateTime createTime;
+    private LocalDate createDate;
+
+    public LocalDate getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(LocalDate createDate) {
+        this.createDate = createDate;
+    }
 
     public Integer getId() {
         return id;
@@ -92,7 +102,7 @@ public class Attend implements Serializable{
     }
 
     public String getStudentType(){
-        if(student.getMemberId() != null){
+        if(student.getMember() != null){
             return "会员用户";
         }else{
             return "普通用户";

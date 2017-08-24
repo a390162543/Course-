@@ -6,6 +6,7 @@ import cn.zhsite.model.state.CollegeState;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,6 +23,9 @@ public class College implements Serializable{
     @Enumerated(EnumType.STRING)
     private CollegeState state;
     private LocalDateTime createTime;
+    private LocalDate createDate;
+    private String area;
+    private String area2;
 
     public Integer getId() {
         return id;
@@ -81,5 +85,29 @@ public class College implements Serializable{
 
     public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public String getArea2() {
+        return area2;
+    }
+
+    public void setArea2(String area2) {
+        this.area2 = area2;
+    }
+
+    public LocalDate getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(LocalDate createDate) {
+        this.createDate = createDate;
     }
 }

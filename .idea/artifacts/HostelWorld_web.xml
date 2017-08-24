@@ -5,6 +5,7 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="Course" />
+          <element id="library" level="application" name="jQuery-2.0.0" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:5.2.8.Final" />
@@ -44,6 +45,7 @@
           <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-el-api:9.0.0.M1" />
           <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-jsp-api:9.0.0.M1" />
           <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-servlet-api:9.0.0.M1" />
+          <element id="library" level="project" name="Maven: org.json:json:20160810" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="Course/web/Web" />

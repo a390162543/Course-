@@ -15,15 +15,65 @@ public class Course implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer collegeId;
+    @OneToOne()
+    @JoinColumn(name = "collegeId",insertable = false,updatable = false)
+    private College college;
     private LocalDate fromDate;
     private LocalDate toDate;
     private String name;
     private Double money;
-    private String teacher;
+    private Integer teacherId;
+    @OneToOne()
+    @JoinColumn(name = "teacherId",insertable = false,updatable = false)
+    private Teacher teacher;
     private Integer limitNum;
     @Enumerated(EnumType.STRING)
     private CourseState state;
     private LocalDateTime createTime;
+    private String type;
+
+    private Integer days;
+    private double moneyPerDay;
+
+    public College getCollege() {
+        return college;
+    }
+
+    public void setCollege(College college) {
+        this.college = college;
+    }
+
+    public Integer getDays() {
+        return days;
+    }
+
+    public void setDays(Integer days) {
+        this.days = days;
+    }
+
+    public double getMoneyPerDay() {
+        return moneyPerDay;
+    }
+
+    public void setMoneyPerDay(double moneyPerDay) {
+        this.moneyPerDay = moneyPerDay;
+    }
+
+    public Integer getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(Integer teacherId) {
+        this.teacherId = teacherId;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public Integer getId() {
         return id;
@@ -73,11 +123,11 @@ public class Course implements Serializable{
         this.money = money;
     }
 
-    public String getTeacher() {
+    public Teacher getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(String teacher) {
+    public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
 
@@ -104,4 +154,6 @@ public class Course implements Serializable{
     public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
+
+
 }

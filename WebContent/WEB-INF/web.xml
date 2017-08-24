@@ -140,4 +140,22 @@
         <url-pattern>/manage/*</url-pattern>
     </filter-mapping>
 
+    <filter>
+        <filter-name>financeFilter</filter-name>
+        <filter-class>cn.zhsite.filter.ManagerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>financeFilter</filter-name>
+        <url-pattern>/finance/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>humanFilter</filter-name>
+        <filter-class>cn.zhsite.filter.ManagerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>humanFilter</filter-name>
+        <url-pattern>/human/*</url-pattern>
+    </filter-mapping>
+
 </web-app>

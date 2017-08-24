@@ -16,7 +16,15 @@ public class Quit implements Serializable{
     private Integer courseId;
     private LocalDate date;
     private LocalDateTime createTime;
+    private LocalDate createDate;
 
+    public LocalDate getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(LocalDate createDate) {
+        this.createDate = createDate;
+    }
 
     public Integer getId() {
         return id;

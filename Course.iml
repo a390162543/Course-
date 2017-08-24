@@ -75,5 +75,7 @@
     <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-servlet-api:9.0.0.M1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-jsp-api:9.0.0.M1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-el-api:9.0.0.M1" level="project" />
+    <orderEntry type="library" name="Maven: org.json:json:20160810" level="project" />
+    <orderEntry type="library" name="jQuery-2.0.0" level="application" />
   </component>
 </module>

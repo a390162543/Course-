@@ -18,7 +18,9 @@ public class CourseModify implements Serializable{
     private LocalDate toDate;
     private String name;
     private Double money;
-    private String teacher;
+    @OneToOne()
+    @JoinColumn(name = "teacherId",insertable = false,updatable = false)
+    private Teacher teacher;
     private Integer limitNum;
     @Enumerated(EnumType.STRING)
     private CourseState state;
@@ -72,11 +74,11 @@ public class CourseModify implements Serializable{
         this.money = money;
     }
 
-    public String getTeacher() {
+    public Teacher getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(String teacher) {
+    public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
 
@@ -102,5 +104,9 @@ public class CourseModify implements Serializable{
 
     public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
+    }
+
+    public String toString(){
+        return getName();
     }
 }

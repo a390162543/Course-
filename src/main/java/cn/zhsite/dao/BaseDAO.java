@@ -7,6 +7,8 @@ public interface BaseDAO<T extends Serializable> {
 
     public void insert(T t);
 
+    public void insertAll(List<T> ts);
+
     public void deleteById(String id);
 
     public void delete(T t);

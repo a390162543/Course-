@@ -6,6 +6,7 @@ import cn.zhsite.model.*;
 import cn.zhsite.service.AttendService;
 import cn.zhsite.service.CollegeService;
 import cn.zhsite.service.MemberService;
+import cn.zhsite.service.TeacherService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,8 @@ public class CollegeController {
     private MemberService memberService;
     @Resource
     private AttendService attendService;
+    @Resource
+    private TeacherService teacherService;
     @Resource
     private HttpSession session;
     @Resource
@@ -76,7 +79,7 @@ public class CollegeController {
         String toDate = request.getParameter("toDate");
         Course course = collegeService.getCourse(courseId);
         course.setName(name);
-        course.setTeacher(teacher);
+        course.setTeacher(teacherService.getTeacherById(teacher));
         course.setLimitNum(Integer.parseInt(limitNum));
         course.setMoney(Double.parseDouble(money));
         course.setFromDate(LocalDate.parse(fromDate));
@@ -118,7 +121,7 @@ public class CollegeController {
         Course course = new Course();
         course.setCollegeId(Integer.parseInt(collegeId));
         course.setName(name);
-        course.setTeacher(teacher);
+        course.setTeacher(teacherService.getTeacherById(teacher));
         course.setLimitNum(Integer.parseInt(limitNum));
         course.setMoney(Double.parseDouble(money));
         course.setFromDate(LocalDate.parse(fromDate));

@@ -23,6 +23,20 @@ public abstract class BaseDAOImpl<T extends Serializable> implements BaseDAO<T> 
     }
 
     @Override
+    public void insertAll(List<T> ts) {
+        Session session = sessionFactory.getCurrentSession();
+        int count = 0;
+        for (T t : ts){
+            session.save(t);
+            count++;
+            if (count>10000){
+                session.flush();
+                session.clear();
+            }
+        }
+    }
+
+    @Override
     public void deleteById(String id) {
         Session session = sessionFactory.getCurrentSession();
         T t = (T) session.get(getModelClass(),id);
@@ -81,10 +95,10 @@ public abstract class BaseDAOImpl<T extends Serializable> implements BaseDAO<T> 
         Session session = sessionFactory.getCurrentSession();
         StringBuilder stringBuilder = new StringBuilder(100);
         stringBuilder.append("from "+getTableName()+" a where ");
-        for(String column:columns){
-            stringBuilder.append("a."+column+"=? and ");
+        for(int i=0;i<columns.length-1;i++){
+            stringBuilder.append("a."+columns[i]+"=? and ");
         }
-        stringBuilder.append("true");
+        stringBuilder.append("a."+columns[columns.length-1]+"=? ");
         Query<T> query = session.createQuery(stringBuilder.toString());
         for(int i=0;i<values.length;i++){
             query = query.setParameter(i,values[i]);

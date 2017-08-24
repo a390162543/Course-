@@ -81,7 +81,7 @@ public class ManagerServiceImpl implements ManagerService{
         if(payback.getState() == PaybackState.CONFIRM){
             payback.setState(PaybackState.SETTLE);
             Student student = studentDAO.getById(payback.getStudentId());
-            Member member = memberDAO.getById(student.getMemberId());
+            Member member = memberDAO.getById(student.getMember().getId());
             member.setMoney(member.getMoney()+payback.getMoney());
             member.setPoints(member.getPoints()-payback.getMoney());
             memberDAO.update(member);

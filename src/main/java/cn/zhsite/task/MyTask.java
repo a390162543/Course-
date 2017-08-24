@@ -1,9 +1,6 @@
 package cn.zhsite.task;
 
-import cn.zhsite.dao.AttendDAO;
-import cn.zhsite.dao.CourseDAO;
-import cn.zhsite.dao.MemberDAO;
-import cn.zhsite.dao.PaymentDAO;
+import cn.zhsite.dao.*;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +20,8 @@ public class MyTask {
     AttendDAO attendDAO;
     @Resource
     PaymentDAO paymentDAO;
+    @Resource
+    DailyDAO dailyDAO;
 
     @Scheduled(cron = "0 0 2 * * ?")
     public void run(){
@@ -33,6 +32,8 @@ public class MyTask {
         runCourseTask();
         runAttendTask();
         runPaymentTask();
+        runDailyTask();
+
 
         System.out.println("----  定时任务结束处理  ----");
     }
@@ -51,5 +52,9 @@ public class MyTask {
 
     private void runPaymentTask(){
         paymentDAO.runTask();
+    }
+
+    private void runDailyTask(){
+        dailyDAO.runTask();
     }
 }

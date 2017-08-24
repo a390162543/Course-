@@ -60,6 +60,20 @@ public class LoginController {
         return mav;
     }
 
+    @RequestMapping("/finance")
+    public ModelAndView finance(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("login/login-finance.html");
+        return mav;
+    }
+
+    @RequestMapping("/human")
+    public ModelAndView human(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("login/login-human.html");
+        return mav;
+    }
+
 
     @RequestMapping("/member.do")
     public ModelAndView memberHandle(){
@@ -122,6 +136,51 @@ public class LoginController {
             inform.setTitle("登录失败");
             inform.setContent("请检查用户名与密码，并尝试重新登录");
             inform.setLink("/login/manager");
+            mav.addObject("inform",inform);
+            mav.setViewName("inform.jsp");
+        }
+        return mav;
+    }
+
+    @RequestMapping("/finance.do")
+    public ModelAndView financeHandle(){
+        ModelAndView mav = new ModelAndView();
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        Result result = managerService.validate(username,password);
+        if(result.isSuccess()){
+            Manager manager = managerService.getByUsername(username);
+            session.setAttribute("manager",manager);
+            mav.addObject("manager",manager);
+            mav.setViewName("redirect:/finance/home");
+        }else{
+            Inform inform = new Inform();
+            inform.setTitle("登录失败");
+            inform.setContent("请检查用户名与密码，并尝试重新登录");
+            inform.setLink("/login/finance");
+            mav.addObject("inform",inform);
+            mav.setViewName("inform.jsp");
+        }
+        return mav;
+    }
+
+
+    @RequestMapping("/human.do")
+    public ModelAndView humanHandle(){
+        ModelAndView mav = new ModelAndView();
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        Result result = managerService.validate(username,password);
+        if(result.isSuccess()){
+            Manager manager = managerService.getByUsername(username);
+            session.setAttribute("manager",manager);
+            mav.addObject("manager",manager);
+            mav.setViewName("redirect:/human/home");
+        }else{
+            Inform inform = new Inform();
+            inform.setTitle("登录失败");
+            inform.setContent("请检查用户名与密码，并尝试重新登录");
+            inform.setLink("/login/human");
             mav.addObject("inform",inform);
             mav.setViewName("inform.jsp");
         }

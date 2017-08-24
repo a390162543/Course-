@@ -131,7 +131,7 @@ public class CollegeServiceImpl implements CollegeService{
         Student student = attend.getStudent();
         Course course = attend.getCourse();
         Result result = new Result();
-        boolean isMember = (student.getMemberId() != null);
+        boolean isMember = (student.getMember() != null);
 
         //退课
         if(attend.getState() == AttendState.ATTEND){

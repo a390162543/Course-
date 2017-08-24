@@ -52,7 +52,7 @@ public class MemberServiceImpl implements MemberService{
             memberDAO.insert(member);
             if(studentDAO.getByIdCard(member.getIdcard())==null){
                 Student student = new Student();
-                student.setMemberId(member.getId());
+                student.setMember(member);
                 student.setIdcard(member.getIdcard());
                 student.setCreateTime(Util.getCurrentDateTime());
                 studentDAO.insert(student);
